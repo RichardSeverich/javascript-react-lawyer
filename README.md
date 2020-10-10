@@ -2,9 +2,12 @@
 
 ## Tools versions
 
-node version: v12.18.4
-npm version:
+node version: 12.18.4
+npm version: 6.14.6
 react create version: create-react-app@3.4.1
+bootstrap: 4.5.2
+Bootstrap is dependent on jQuery and Popper, 
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
