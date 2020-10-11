@@ -11,6 +11,11 @@ Bootstrap is dependent on jQuery and Popper,
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Documenation
+
+### Documenation tables - react-bootstrap
+https://react-bootstrap-table.github.io/react-bootstrap-table2/storybook/index.html
+
 ## Available Scripts
 
 In the project directory, you can run:

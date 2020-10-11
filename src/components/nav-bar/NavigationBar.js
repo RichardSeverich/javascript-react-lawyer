@@ -136,32 +136,32 @@ const NavigationBar = () => {
       </ul>
 
       <ul className="navbar-nav ml-auto nav-flex-icons">
-        <li className="nav-item dropdown">
-          <a
-            className="nav-link dropdown-toggle"
-            id="navbarDropdownMenuLink-333"
+        <div className="btn-group">
+          <button
+            type="button"
+            className="btn btn-dark dropdown-toggle"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <i className="fas fa-user"></i>
-          </a>
-          <div
-            className="dropdown-menu dropdown-menu-right dropdown-default"
-            aria-labelledby="navbarDropdownMenuLink-333"
-          >
-            <a className="dropdown-item" href="#">
-              Opciones
-            </a>
-            <a
-              onClick={navigateLogin}
-              className="dropdown-item"
-              href="#"
+            Opciones
+          </button>
+          <div className="dropdown-menu dropdown-menu-right">
+            <button 
+              className="dropdown-item" 
+              type="button"
+            >
+              Parametros del sistema
+            </button>
+            <button 
+              onClick={navigateLogin} 
+              className="dropdown-item" 
+              type="button"
             >
               Salir
-            </a>
+            </button>
           </div>
-        </li>
+        </div>
       </ul>
     </nav>
   </div>
