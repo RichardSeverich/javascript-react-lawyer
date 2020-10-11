@@ -1,41 +1,53 @@
 // React
 import { useHistory } from "react-router";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // Others
+import CommonTable from "./../common/CommonTable";
 import NavigationBar from "./../nav-bar/NavigationBar";
+
+import i18n from "./../../i18n/i18n";
+import getTableColums from "./TableColumns";
 import mockData from "./../../mock-data/mock-data-manager";
-import getTableColums from  "./TableColumns";
-import CommonTable from "./../common/CommonTable"
-import i18n from "./../../i18n/i18n"
+import requestManager from "./../../api/requestManager";
+
 import "./Table.css";
 
 const Table = () => {
 
+  // Declare constant
   const { REACT_APP_MOCK_DATA } = process.env;
   const [arrayData, setArrayData] = useState();
   const history = useHistory();
- 
+
+  // Hooks
   useEffect(() => {
-    if(REACT_APP_MOCK_DATA=="TRUE") {
+    if (REACT_APP_MOCK_DATA == "TRUE") {
       console.log(mockData.arrayUsers);
       setArrayData(mockData.arrayUsers);
     } else {
-      // here should be the API CALL
+      requestManager.get("users", setArrayData);
     }
   });
 
+  // Handles
   const handleEdit = (id) => {
     console.log(id);
     alert("edit successfully");
-  }
+  };
 
   const handleDelete = (id) => {
     console.log(id);
-    alert("deleted successfully");
-  }
+    const message = "Esta segudo que desa realizar esta accion?"
+    let result = window.confirm(message);
+    if(result){
 
-  if(arrayData===undefined){
-    return (<div>{i18n.userTable.tableLoadingSection}</div>);
+      alert("Eliminado correctamente");
+    }
+    
+  };
+
+  if (arrayData === undefined) {
+    return <div>{i18n.userTable.tableLoadingSection}</div>;
   }
 
   return (
@@ -46,14 +58,14 @@ const Table = () => {
           <h3 align="center">{i18n.userTable.tableTitle}</h3>
         </div>
         <div className="card-body">
-        <CommonTable
-          arrayData={arrayData}
-          columns={getTableColums(handleEdit, handleDelete)}
-        ></CommonTable>
+          <CommonTable 
+            arrayData={arrayData} 
+            columns={getTableColums(handleEdit, handleDelete)}>
+          </CommonTable>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Table;

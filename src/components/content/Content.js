@@ -7,9 +7,7 @@ const Content = (props) => {
     body: PropTypes.object.isRequired
   };*/
   const { body } = props;
-  return (
-    <div className="Content">{body}</div>
-  );
-}
+  return <div className="Content">{body}</div>;
+};
 
 export default Content;

@@ -3,12 +3,12 @@ import { users } from "./users.json";
 var arrayUsers = users;
 
 const updateArrayUsers = (newArrayUsers) => {
-    arrayUsers=newArrayUsers;
-}
+  arrayUsers = newArrayUsers;
+};
 
 const mockData = {
-    arrayUsers: arrayUsers,
-    updateArrayUsers: updateArrayUsers
-}
+  arrayUsers: arrayUsers,
+  updateArrayUsers: updateArrayUsers,
+};
 
-export default mockData
+export default mockData;

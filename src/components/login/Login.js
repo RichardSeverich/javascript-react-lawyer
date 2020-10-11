@@ -1,37 +1,56 @@
 // React
 import { useHistory } from "react-router";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // Others
-import "./Login.css";
-import mockData from "./../../mock-data/mock-data-manager";
 import Logo from "./../logo/Logo";
-import { useInput } from './../hooks/useInput';
+import { useInput } from "./../hooks/useInput";
+import mockData from "./../../mock-data/mock-data-manager";
+import requestManager from "./../../api/requestManager"
+import "./Login.css";
 
 const Login = () => {
-
   const { REACT_APP_MOCK_DATA } = process.env;
-  const { value:valueUsername, bind:bindUsername, reset:resetUsername } = useInput('');
-  const { value:valuePassword, bind:bindPassword, reset:resetPassword } = useInput('');
-  const [arrayUsers, setArrayUsers] = useState();
+  const { value: valueUsername, bind: bindUsername, reset: resetUsername } = useInput("");
+  const { value: valuePassword, bind: bindPassword, reset: resetPassword } = useInput("");
   const history = useHistory();
-
-  useEffect(() => {
-    if(REACT_APP_MOCK_DATA=="TRUE"){
-      console.log("mock data enable");
-      console.log(mockData);
-      setArrayUsers(mockData.arrayUsers);
-    } else {
-      // here should be the API CALL
-      console.log("mock data disable");
-    }
-  });
 
   const handleLogin = (event) => {
     event.preventDefault();
+    if (REACT_APP_MOCK_DATA == "TRUE") {  
+      console.log("mock data enable");
+      handleLoginMockData();    
+    } else {
+      console.log("mock data disable");
+      handleRequestLogin();
+    }
+  }
+
+  const handleRequestLogin = () => {
+    let body = {
+      username: valueUsername,
+      password: valuePassword
+    }
+    requestManager.post("login", body, (response) => {
+      if(response.data){
+        history.push("/nav-bar");
+        window.localStorage.setItem("token", response.data.data[0].token);
+      } else {
+        handleErrorMessage();
+      }
+    });
+  }
+
+  const handleErrorMessage = () => {
+    alert("Usuario o Contrasena Incorrecto");
+    resetUsername();
+    resetPassword();
+  }
+
+  const handleLoginMockData = () => {
     let username = valueUsername;
     let password = valuePassword;
     let band = false;
-    arrayUsers.forEach(function(user, indice, array) {
+    mockData.arrayUsers.forEach(function (user, indice, array) {
       let bandOne = user.dni === username && user.password === password;
       let bandTwo = user.username === username && user.password === password;
       if (bandOne || bandTwo) {
@@ -42,11 +61,9 @@ const Login = () => {
     if (band) {
       history.push("/nav-bar");
     } else {
-      alert("user or password incorrect");
-      resetUsername();
-      resetPassword();
+      handleErrorMessage();
     }
-  }
+  };
 
   return (
     <div>
@@ -72,19 +89,17 @@ const Login = () => {
               </div>
               <div className="form-group">
                 <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  minLength="3"
-                  maxLength="10"
-                  {...bindPassword}
-                ></input>
+                <input 
+                  type="password" 
+                  className="form-control" 
+                  minLength="3" maxLength="10" 
+                  {...bindPassword}>
+                </input>
               </div>
               <div className="text-center">
-                <button
-                  onClick={handleLogin}
-                  type="button"
-                  style={{ marginLeft: "24px" }}
+                <button onClick={handleLogin} 
+                  type="button" 
+                  style={{ marginLeft: "24px" }} 
                   className="btn btn-info"
                 >
                   Ingresar

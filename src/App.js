@@ -7,7 +7,7 @@ import "./App.css";
 
 function App(props) {
   const propTypes = {
-    children: PropTypes.object.isRequired
+    children: PropTypes.object.isRequired,
   };
   const { children } = props;
   return (
