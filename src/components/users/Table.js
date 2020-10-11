@@ -6,6 +6,7 @@ import NavigationBar from "./../nav-bar/NavigationBar";
 import mockData from "./../../mock-data/mock-data-manager";
 import getTableColums from  "./TableColumns";
 import CommonTable from "./../common/CommonTable"
+import i18n from "./../../i18n/i18n"
 import "./Table.css";
 
 const Table = () => {
@@ -34,7 +35,7 @@ const Table = () => {
   }
 
   if(arrayData===undefined){
-    return (<div>Cargando...</div>);
+    return (<div>{i18n.userTable.tableLoadingSection}</div>);
   }
 
   return (
@@ -42,7 +43,7 @@ const Table = () => {
       <NavigationBar></NavigationBar>
       <div className="card card-users">
         <div className="card-header">
-          <h3 align="center">Usuarios</h3>
+          <h3 align="center">{i18n.userTable.tableTitle}</h3>
         </div>
         <div className="card-body">
         <CommonTable

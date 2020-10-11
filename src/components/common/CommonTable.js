@@ -22,7 +22,6 @@ const CommonTable = (props) => {
       <ExportButton 
         { ...props.csvProps }
       >
-        Export CSV!!
       </ExportButton>
       <BootstrapTable 
         { ...props.baseProps }

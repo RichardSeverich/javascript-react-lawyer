@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from "./../../i18n/i18n"
 
 const ExportButton = (props) => {
   const handleClick = () => {
@@ -10,7 +11,7 @@ const ExportButton = (props) => {
       className="btn btn-success" 
       onClick={ handleClick }
     >
-      Exportar a CSV
+      {i18n.userTable.tableExportButton}
     </button>
     </div>
   );
