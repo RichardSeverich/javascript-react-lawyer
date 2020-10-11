@@ -1,7 +1,12 @@
 import React from 'react';
-import { textFilter } from 'react-bootstrap-table2-filter';
+import { textFilter, dateFilter, selectFilter } from 'react-bootstrap-table2-filter';
 
 const getTableColums = (handleEdit, handleDelete) => {
+
+  const selectOptionsType = {
+    admin: 'admin',
+    lawyer: 'lawyer'
+  };
 
   const columns = [
     {
@@ -71,9 +76,9 @@ const getTableColums = (handleEdit, handleDelete) => {
       dataField: 'birthDate',
       text: 'Fecha Nacimiento',
       sort: true,
-      filter: textFilter(),
+      filter: dateFilter(),
       headerStyle: {
-        width: '160px'
+        width: '220px'
       }
     },
     {
@@ -82,7 +87,7 @@ const getTableColums = (handleEdit, handleDelete) => {
       sort: true,
       filter: textFilter(),
       headerStyle: {
-        width: '160px'
+        width: '180px'
       }
     },
     {
@@ -107,27 +112,29 @@ const getTableColums = (handleEdit, handleDelete) => {
       dataField: 'type',
       text: 'Tipo',
       sort: true,
-      filter: textFilter(),
+      filter: selectFilter({
+        options: selectOptionsType
+      }),
       headerStyle: {
-        width: '120px'
+        width: '140px'
       }
     },
     {
       dataField: 'creationDate',
       text: 'Fecha de creacion',
       sort: true,
-      filter: textFilter(),
+      filter: dateFilter(),
       headerStyle: {
-        width: '160px'
+        width: '220px'
       }
     },
     {
       dataField: 'updateDate',
       text: 'Fecha de modificacion',
       sort: true,
-      filter: textFilter(),
+      filter: dateFilter(),
       headerStyle: {
-        width: '160px'
+        width: '220px'
       }
     },
     {
