@@ -4,7 +4,7 @@ const i18n = {
   tableExportButton: "Exportar a CSV",
   headerId: "Id",
   headerUsername: "Username",
-  headerPass: "Contrasena",
+  headerPassword: "Contrasena",
   headerDni: "Cedula Identidad",
   headerName: "Nombres",
   headerFatherLastName: "Apellido Paterno",
@@ -16,10 +16,8 @@ const i18n = {
   headerType: "Tipo",
   headerCreationDate: "Fecha de creacion",
   headerModificationDate: "Fecha de modificacion",
-  headerEdit: "Editar",
-  headerDelete: "Eliminar",
-  buttonEdit: "Editar",
-  buttonDelete: "Eliminar",
+  edit: "Editar",
+  delete: "Eliminar",
 };
 
 export default i18n;

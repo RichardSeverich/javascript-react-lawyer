@@ -1,7 +1,8 @@
 import React from 'react';
 import { textFilter, dateFilter, selectFilter } from 'react-bootstrap-table2-filter';
+import i18n from "./../../i18n/i18n";
 
-const getTableColums = (handleEdit, handleDelete) => {
+const getTableModel = (handleEdit, handleDelete) => {
 
   const selectOptionsType = {
     admin: 'admin',
@@ -11,7 +12,7 @@ const getTableColums = (handleEdit, handleDelete) => {
   const columns = [
     {
       dataField: 'id',
-      text: 'Id',
+      text: i18n.userTable.headerId,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -20,7 +21,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'username',
-      text: 'Username',
+      text: i18n.userTable.headerUsername,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -29,7 +30,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'password',
-      text: 'Contrasena',
+      text: i18n.userTable.headerPassword,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -38,7 +39,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'dni',
-      text: 'Cedula Identidad',
+      text: i18n.userTable.headerDni,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -47,7 +48,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'name',
-      text: 'Nombres',
+      text: i18n.userTable.headerName,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -56,7 +57,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'fatherLastName',
-      text: 'Apellido Paterno',
+      text: i18n.userTable.headerFatherLastName,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -65,7 +66,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'motherLastName',
-      text: 'Apellido Materno',
+      text: i18n.userTable.headerMotherLastName,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -74,7 +75,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     }, 
     {
       dataField: 'birthDate',
-      text: 'Fecha Nacimiento',
+      text: i18n.userTable.headerBirthdate,
       sort: true,
       filter: dateFilter(),
       headerStyle: {
@@ -83,7 +84,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'telephone',
-      text: 'Celular',
+      text: i18n.userTable.headerTelephone,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -92,7 +93,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'address',
-      text: 'Direccion',
+      text: i18n.userTable.headerAddress,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -101,7 +102,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'email',
-      text: 'Correo Electronico',
+      text: i18n.userTable.headerEmail,
       sort: true,
       filter: textFilter(),
       headerStyle: {
@@ -110,7 +111,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'type',
-      text: 'Tipo',
+      text: i18n.userTable.headerType,
       sort: true,
       filter: selectFilter({
         options: selectOptionsType
@@ -121,7 +122,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'creationDate',
-      text: 'Fecha de creacion',
+      text: i18n.userTable.headerCreationDate,
       sort: true,
       filter: dateFilter(),
       headerStyle: {
@@ -130,7 +131,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'updateDate',
-      text: 'Fecha de modificacion',
+      text: i18n.userTable.headerModificationDate,
       sort: true,
       filter: dateFilter(),
       headerStyle: {
@@ -139,7 +140,7 @@ const getTableColums = (handleEdit, handleDelete) => {
     },
     {
       dataField: 'edit',
-      text: 'Editar',
+      text: i18n.userTable.edit,
       headerStyle: {
         width: '120px'
       },
@@ -148,13 +149,13 @@ const getTableColums = (handleEdit, handleDelete) => {
         className="btn btn-warning"
         onClick={() => handleEdit(row.id)}
       >
-        Editar
+        {i18n.userTable.edit}
       </button>
       ),
     },
     {
       dataField: 'delete',
-      text: 'Eliminar',
+      text: i18n.userTable.delete,
       headerStyle: {
         width: '120px'
       },
@@ -163,7 +164,7 @@ const getTableColums = (handleEdit, handleDelete) => {
         className="btn btn-danger"
         onClick={() => handleDelete(row.id)}
         >
-        Eliminar
+          {i18n.userTable.delete}
         </button>
       ),
     }
@@ -171,4 +172,4 @@ const getTableColums = (handleEdit, handleDelete) => {
   return columns;
 }
 
-export default getTableColums;
+export default getTableModel;

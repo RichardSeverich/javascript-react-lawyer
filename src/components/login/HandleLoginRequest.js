@@ -1,13 +1,15 @@
-import requestManager from "./../../api/requestManager"
+import requestManager from "./../../api/RequestManager"
 import handleErrorMessage from "./HandleErrorMessage";
 
 const handleLoginRequest = (username, password, 
   resetUsername, resetPassword, handleNavigate) => {
   const body = {
-    username,
-    password
+    username: username,
+    password: password
   }
-  requestManager.post("login", body, (response) => {
+  console.log(body);
+  requestManager.postAuth("login", body, (response) => {
+    console.log(response);
     if(response.data){
       window.localStorage.setItem("token", response.data.data[0].token);
       handleNavigate();

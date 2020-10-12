@@ -2,9 +2,10 @@ import React from "react";
 import ButtonDropDown from "./ButtonDropDown";
 
 const buttons = (props) => {
-  return props.buttonsArray.map((button) => {
+  return props.buttonsArray.map((button, index) => {
     return (
       <ButtonDropDown
+        key={index}
         navigate={button.navigate}
         ButtonContent={button.ButtonContent}
       >
