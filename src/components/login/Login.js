@@ -1,69 +1,21 @@
 // React
+import React from "react";
 import { useHistory } from "react-router";
-import React, { useState, useEffect } from "react";
 // Others
 import Logo from "./../logo/Logo";
-import { useInput } from "./../hooks/useInput";
-import mockData from "./../../mock-data/mock-data-manager";
-import requestManager from "./../../api/requestManager"
+import useInput from "./../hooks/UseInput";
+import handleLogin from "./HandleLogin";
 import "./Login.css";
 
 const Login = () => {
-  const { REACT_APP_MOCK_DATA } = process.env;
+
+  const history = useHistory();
   const { value: valueUsername, bind: bindUsername, reset: resetUsername } = useInput("");
   const { value: valuePassword, bind: bindPassword, reset: resetPassword } = useInput("");
-  const history = useHistory();
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    if (REACT_APP_MOCK_DATA == "TRUE") {  
-      console.log("mock data enable");
-      handleLoginMockData();    
-    } else {
-      console.log("mock data disable");
-      handleRequestLogin();
-    }
+  const handleNavigate = () => {
+    history.push("/nav-bar");
   }
-
-  const handleRequestLogin = () => {
-    let body = {
-      username: valueUsername,
-      password: valuePassword
-    }
-    requestManager.post("login", body, (response) => {
-      if(response.data){
-        history.push("/nav-bar");
-        window.localStorage.setItem("token", response.data.data[0].token);
-      } else {
-        handleErrorMessage();
-      }
-    });
-  }
-
-  const handleErrorMessage = () => {
-    alert("Usuario o Contrasena Incorrecto");
-    resetUsername();
-    resetPassword();
-  }
-
-  const handleLoginMockData = () => {
-    let username = valueUsername;
-    let password = valuePassword;
-    let band = false;
-    mockData.arrayUsers.forEach(function (user, indice, array) {
-      let bandOne = user.dni === username && user.password === password;
-      let bandTwo = user.username === username && user.password === password;
-      if (bandOne || bandTwo) {
-        band = true;
-        //break;
-      }
-    });
-    if (band) {
-      history.push("/nav-bar");
-    } else {
-      handleErrorMessage();
-    }
-  };
 
   return (
     <div>
@@ -97,8 +49,13 @@ const Login = () => {
                 </input>
               </div>
               <div className="text-center">
-                <button onClick={handleLogin} 
-                  type="button" 
+                <button onClick={()=>handleLogin(
+                  valueUsername,
+                  valuePassword,
+                  resetUsername,
+                  resetPassword,
+                  handleNavigate)}
+                  type="button"
                   style={{ marginLeft: "24px" }} 
                   className="btn btn-info"
                 >

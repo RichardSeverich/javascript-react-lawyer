@@ -1,7 +1,9 @@
-import userTable from "./spanish/userTable"
+import userTable from "./spanish/UserTable"
+import navBar from "./spanish/NavBar"
 
 const i18n = {
-    userTable
+  navBar,
+  userTable,
 }
 
 export default i18n;

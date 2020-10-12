@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 // Others
 import CommonTable from "./../common/CommonTable";
 import NavigationBar from "./../nav-bar/NavigationBar";
-
 import i18n from "./../../i18n/i18n";
 import getTableColums from "./TableColumns";
 import mockData from "./../../mock-data/mock-data-manager";
@@ -56,17 +55,17 @@ const Table = () => {
     <div>
       <NavigationBar></NavigationBar>
       <div className="container col-md-12">
-      <div className="card card-users">
-        <div className="card-header">
-          <h3 align="center">{i18n.userTable.tableTitle}</h3>
+        <div className="card card-users">
+          <div className="card-header">
+            <h3 align="center">{i18n.userTable.tableTitle}</h3>
+          </div>
+          <div className="card-body card-body-users">
+            <CommonTable 
+              arrayData={arrayData} 
+              columns={getTableColums(handleEdit, handleDelete)}>
+            </CommonTable>
+          </div>
         </div>
-        <div className="card-body card-body-users">
-          <CommonTable 
-            arrayData={arrayData} 
-            columns={getTableColums(handleEdit, handleDelete)}>
-          </CommonTable>
-        </div>
-      </div>
       </div>
     </div>
   );

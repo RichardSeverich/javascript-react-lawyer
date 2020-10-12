@@ -1,24 +1,36 @@
+// React
 import React from "react";
 import { useHistory } from "react-router";
-
-import "./NavigationBar.css";
+// Others
+import ButtonGroup from "./ButtonGroup";
+import arrayBuilder from "./ButtonArrayBuilder"
+import i18n from "./../../i18n/i18n"
 import logo from "./logo.svg";
+import "./NavigationBar.css";
 
 const NavigationBar = () => {
 
   const history = useHistory();
-
-  const navigateUsersTable = () => {
-    history.push("/users-table");
-  }
-
-  const navigateUsersForm = () => {
-    history.push("/users-form");
-  }
-
-  const navigateLogin = () => {
-    history.push("/login");
-  }
+  const navigateUsersForm = () => { history.push("/users-form");}
+  const navigateUsersTable = () => { history.push("/users-table");}
+  const navigatePersonsForm = () => { history.push("/");}
+  const navigatePersonsTable = () => { history.push("/");}
+  const navigateProcessForm = () => { history.push("/");}
+  const navigateProcessTable = () => { history.push("/");}
+  const navigateReportUsers = () => { history.push("/");}
+  const navigateReportPersons = () => { history.push("/");}
+  const navigateReportProcess= () => { history.push("/");}
+  const navigateSystem= () => { history.push("/");}
+  const navigateLogin = () => { history.push("/login");}
+  const btnUsers = arrayBuilder.getArrayAdmin(navigateUsersForm, navigateUsersTable);
+  const btnPersons = arrayBuilder.getArrayAdmin(navigatePersonsForm, navigatePersonsTable);
+  const btnProcess = arrayBuilder.getArrayAdmin(navigateProcessForm, navigateProcessTable);
+  const btnReports = arrayBuilder.getArrayReports(
+    navigateReportUsers, 
+    navigateReportPersons,
+    navigateReportProcess
+  );
+  const btnOptions = arrayBuilder.getArrayOptions(navigateSystem, navigateLogin)
 
   return (
     <div>
@@ -27,141 +39,33 @@ const NavigationBar = () => {
         <img src={logo} className="App-logo-bar" alt="logo" />
       </a>
       <ul className="navbar-nav">
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-dark dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Adm. Usuarios
-          </button>
-          <div className="dropdown-menu dropdown-menu-right">
-            <button
-              onClick={navigateUsersTable}
-              className="dropdown-item"
-              type="button"
-            >
-              Mostrar
-            </button>
-            <button
-              onClick={navigateUsersForm}
-              className="dropdown-item"
-              type="button"
-            >
-              Crear
-            </button>
-          </div>
-        </div>
-
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-dark dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Adm. Personas
-          </button>
-          <div className="dropdown-menu dropdown-menu-right">
-            <button
-              onClick={navigateUsersTable}
-              className="dropdown-item"
-              type="button"
-            >
-              Mostrar
-            </button>
-            <button
-              onClick={navigateUsersTable}
-              className="dropdown-item"
-              type="button"
-            >
-              Crear
-            </button>
-          </div>
-        </div>
-
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-dark dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Adm. Procesos
-          </button>
-          <div className="dropdown-menu dropdown-menu-right">
-            <button
-              onClick={navigateUsersTable}
-              className="dropdown-item"
-              type="button"
-            >
-              Mostrar
-            </button>
-            <button
-              onClick={navigateUsersTable}
-              className="dropdown-item"
-              type="button"
-            >
-              Crear
-            </button>
-          </div>
-        </div>
-
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-dark dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Adm. Repores
-          </button>
-          <div className="dropdown-menu dropdown-menu-right">
-            <button className="dropdown-item" type="button">
-              Reporte Usuarios
-            </button>
-            <button className="dropdown-item" type="button">
-              Reporte Personas
-            </button>
-            <button className="dropdown-item" type="button">
-              Reporte Procesos
-            </button>
-          </div>
-        </div>
+        <ButtonGroup
+          buttonGroupTitle={i18n.navBar.groupButtonsUsers}
+          buttonsArray={btnUsers}
+        >
+        </ButtonGroup>
+        <ButtonGroup
+          buttonGroupTitle={i18n.navBar.groupButtonsPersons}
+          buttonsArray={btnPersons}
+        >
+        </ButtonGroup>
+        <ButtonGroup
+          buttonGroupTitle={i18n.navBar.groupButtonsProcess}
+          buttonsArray={btnProcess}
+        >
+        </ButtonGroup>
+        <ButtonGroup
+          buttonGroupTitle={i18n.navBar.groupButtonsReports}
+          buttonsArray={btnReports}
+        >
+        </ButtonGroup>
       </ul>
-
       <ul className="navbar-nav ml-auto nav-flex-icons">
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-dark dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Opciones
-          </button>
-          <div className="dropdown-menu dropdown-menu-right">
-            <button 
-              className="dropdown-item" 
-              type="button"
-            >
-              Parametros del sistema
-            </button>
-            <button 
-              onClick={navigateLogin} 
-              className="dropdown-item" 
-              type="button"
-            >
-              Salir
-            </button>
-          </div>
-        </div>
+        <ButtonGroup
+          buttonGroupTitle={i18n.navBar.groupButtonsOptions}
+          buttonsArray={btnOptions}
+        >
+        </ButtonGroup>
       </ul>
     </nav>
   </div>
