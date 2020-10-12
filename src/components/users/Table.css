@@ -2,7 +2,7 @@
   width: auto;
 }
 
-.card-body {
+.card-body-users {
   overflow-x: auto;
-  /*height:780px;*/
+  height:760px;
 }

@@ -25,7 +25,11 @@ const Table = () => {
       console.log(mockData.arrayUsers);
       setArrayData(mockData.arrayUsers);
     } else {
-      requestManager.get("users", setArrayData);
+      requestManager.get("users", (response) => {
+        if(response.data){
+          setArrayData(response.data.data);  
+        }
+      });
     }
   });
 
@@ -40,10 +44,8 @@ const Table = () => {
     const message = "Esta segudo que desa realizar esta accion?"
     let result = window.confirm(message);
     if(result){
-
       alert("Eliminado correctamente");
     }
-    
   };
 
   if (arrayData === undefined) {
@@ -53,16 +55,18 @@ const Table = () => {
   return (
     <div>
       <NavigationBar></NavigationBar>
+      <div className="container col-md-12">
       <div className="card card-users">
         <div className="card-header">
           <h3 align="center">{i18n.userTable.tableTitle}</h3>
         </div>
-        <div className="card-body">
+        <div className="card-body card-body-users">
           <CommonTable 
             arrayData={arrayData} 
             columns={getTableColums(handleEdit, handleDelete)}>
           </CommonTable>
         </div>
+      </div>
       </div>
     </div>
   );

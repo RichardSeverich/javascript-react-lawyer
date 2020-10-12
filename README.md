@@ -11,6 +11,13 @@ Bootstrap is dependent on jQuery and Popper,
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Pre requisites
+
+1. Windows 10 (64-bit).
+2. Resolution of monitor 1080p (24 inches recommended).
+3. Google chrome Version 86.0 (64-bit).
+4. Browser zoom recommended 100%.
+
 ## Documenation
 
 ### Documenation tables - react-bootstrap
