@@ -3,4 +3,5 @@ const handleErrorMessage = (resetUsername, resetPassword) => {
   resetUsername();
   resetPassword();
 }
+
 export default handleErrorMessage;

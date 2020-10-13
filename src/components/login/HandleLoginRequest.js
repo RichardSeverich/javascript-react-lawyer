@@ -7,14 +7,17 @@ const handleLoginRequest = (username, password,
     username: username,
     password: password
   }
-  console.log(body);
   requestManager.postAuth("login", body, (response) => {
-    console.log(response);
     if(response.status===200){
       window.localStorage.setItem("token", response.data.data[0].token);
       handleNavigate();
-    } else {
+    } else if(response.status===400){
       handleErrorMessage(resetUsername, resetPassword);
+    } else if(response.status===404){
+      handleErrorMessage(resetUsername, resetPassword);
+    }
+    else {
+      console.log("Algo no esta funcionando bien, contacte con su administrador");
     }
   });
 }

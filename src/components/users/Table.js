@@ -29,10 +29,11 @@ const Table = () => {
   useEffect(() => {
     let isMounted = true; 
     if (REACT_APP_MOCK_DATA === "TRUE") {
-      console.log(mockData.arrayUsers);
-      setArrayData(mockData.arrayUsers);
-      handleEdit = handleEditMock;
-      handleDelete = handleDeleteMock;
+      if (isMounted) {
+        setArrayData(mockData.arrayUsers);
+        handleEdit = handleEditMock;
+        handleDelete = handleDeleteMock;
+      }
     } else {
       requestManager.get("users", (response) => {
         if(response.status==200){
