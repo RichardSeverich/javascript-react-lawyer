@@ -10,7 +10,7 @@ const handleLoginRequest = (username, password,
   console.log(body);
   requestManager.postAuth("login", body, (response) => {
     console.log(response);
-    if(response.data){
+    if(response.status===200){
       window.localStorage.setItem("token", response.data.data[0].token);
       handleNavigate();
     } else {

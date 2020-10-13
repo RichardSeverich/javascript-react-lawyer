@@ -5,7 +5,7 @@ import NavigationBar from "./../nav-bar/NavigationBar";
 import useInput from "./../hooks/UseInput";
 import FormInput from "./../common/FormInput";
 import FormDropDown from "./../common/FormDropDown";
-
+import handleAddRequest from "./HandleAddRequest";
 import "./Form.css";
 
 const Form = () => {
@@ -34,7 +34,19 @@ const Form = () => {
     if (REACT_APP_MOCK_DATA == "TRUE") {
       alert("create successfully");
     } else {
-      // here should be the API CALL
+      handleAddRequest({
+        username: valueUsername,
+        password: valuePassword,
+        dni: valueDni,
+        name: valueName,
+        fatherLastName: valueFatherLastName,
+        motherLastName: valueMotherLastName,
+        birthDate: valueBirthDate,
+        telephone: valueTelephone,
+        address: valueAddress,
+        email: valueEmail,
+        type: valueType,
+      })
     }
   };
 
@@ -82,6 +94,11 @@ const Form = () => {
                 minLength="3"
                 maxLength="24"
                 bind={bindMotherLastName}
+              ></FormInput>
+              <FormInput
+                labelContent="Fecha de Nacimiento"
+                type="date"
+                bind={bindBirthDate}
               ></FormInput>
               <FormInput
                 labelContent="Celular"

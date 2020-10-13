@@ -12,7 +12,7 @@ import handleDeleteRequest from "./HandleDeleteRequest";
 import handleEditMock from "./HandleEditMock";
 import handleDeleteMock from "./HandleDeleteMock";
 import mockData from "./../../mock-data/mock-data-manager";
-import requestManager from "./../../api/requestManager";
+import requestManager from "./../../api/RequestManager";
 
 import "./Table.css";
 
@@ -27,18 +27,22 @@ const Table = () => {
 
   // Hooks
   useEffect(() => {
-    if (REACT_APP_MOCK_DATA == "TRUE") {
+    let isMounted = true; 
+    if (REACT_APP_MOCK_DATA === "TRUE") {
       console.log(mockData.arrayUsers);
       setArrayData(mockData.arrayUsers);
       handleEdit = handleEditMock;
       handleDelete = handleDeleteMock;
     } else {
       requestManager.get("users", (response) => {
-        if(response.data){
-          setArrayData(response.data.data);  
+        if(response.status==200){
+          if (isMounted) {
+            setArrayData(response.data.data);
+          }
         }
       });
     }
+    return () => { isMounted = false };
   });
 
   if (arrayData === undefined) {

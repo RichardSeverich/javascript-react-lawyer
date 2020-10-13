@@ -9,6 +9,7 @@ const FormDropDown = (props) => {
         <option 
           key={index} 
           value={option.value}
+          selected="selected"
         >
           {option.content}
         </option>
@@ -20,8 +21,9 @@ const FormDropDown = (props) => {
   return (
     <div className="form-group row">
       <label className="col-sm-3 control-label">{props.labelContent}</label>
-      <div className="col-sm-9">
-        <select className="custom-select custom-select-sm" {...props.bind}>
+      <div className="col-sm-9" >
+        <select {...props.bind} className="custom-select custom-select-sm">
+          <option value="" selected disabled hidden>Selecione</option>
           {options()}
         </select>
       </div>

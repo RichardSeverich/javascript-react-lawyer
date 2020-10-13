@@ -9,7 +9,7 @@ const get = (endpoint, callback) => {
       callback(response);
     })
     .catch(error => {
-      callback(error);
+      callback(error.response);
   })
 };
 

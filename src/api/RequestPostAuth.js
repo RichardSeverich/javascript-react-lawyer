@@ -8,7 +8,7 @@ const post = (endpoint, body, callback) => {
       callback(response);
     })
     .catch(error => {
-      callback(error)
+      callback(error.response);
   })
 };
 
