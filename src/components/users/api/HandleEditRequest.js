@@ -1,6 +1,6 @@
-const handleEdit = (row) => {
+const handleEdit = (navigateForm, row) => {
   console.log(row);
-  alert("Editado exitosamente");
+  navigateForm(row);
 };
 
 export default handleEdit;

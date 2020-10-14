@@ -8,25 +8,42 @@ import FormDropDown from "./../common/FormDropDown";
 import { handleCreate } from "./HandleManager";
 import "./Form.css";
 
-const Form = () => {
-  // Input values
-  const { value: valueUsername, bind: bindUsername, reset: resetUsername } = useInput("");
-  const { value: valuePassword, bind: bindPassword, reset: resetPassword } = useInput("");
-  const { value: valueDni, bind: bindDni, reset: resetDni } = useInput("");
-  const { value: valueName, bind: bindName, reset: resetName } = useInput("");
-  const { value: valueFatherLastName, bind: bindFatherLastName, reset: resetFatherLastName } = useInput("");
-  const { value: valueMotherLastName, bind: bindMotherLastName, reset: resetMotherLastName } = useInput("");
-  const { value: valueBirthDate, bind: bindBirthDate, reset: resetBirthDate } = useInput("");
-  const { value: valueTelephone, bind: bindTelephone, reset: resetTelephone } = useInput("");
-  const { value: valueAddress, bind: bindAddress, reset: resetAddress } = useInput("");
-  const { value: valueEmail, bind: bindEmail, reset: resetEmail } = useInput("");
-  const { value: valueType, bind: bindType, reset: resetType } = useInput("");
+const Form = (props) => {
+
+  console.log(props);
+  let state = props.location.state;
+  let id = state ? state.data.id : "";
+  let username = state ? state.data.username : "";
+  let password = state ? state.data.password : "";
+  let dni = state ? state.data.dni : "";
+  let name = state ? state.data.name : "";
+  let fatherLastName = state ? state.data.fatherLastName : "";
+  let motherLastName = state ? state.data.motherLastName : "";
+  let birthDate = state ? state.data.birthDate : "";
+  let telephone = state ? state.data.telephone : "";
+  let address = state ? state.data.address : "";
+  let email = state ? state.data.email : "";
+  let type = state ? state.data.type : "";
+
+  const { value: valueUsername, bind: bindUsername, reset: resetUsername } = useInput(username);
+  const { value: valuePassword, bind: bindPassword, reset: resetPassword } = useInput(password);
+  const { value: valueDni, bind: bindDni, reset: resetDni } = useInput(dni);
+  const { value: valueName, bind: bindName, reset: resetName } = useInput(name);
+  const { value: valueFatherLastName, bind: bindFatherLastName, reset: resetFatherLastName } 
+    = useInput(fatherLastName);
+  const { value: valueMotherLastName, bind: bindMotherLastName, reset: resetMotherLastName } 
+    = useInput(motherLastName);
+  const { value: valueBirthDate, bind: bindBirthDate, reset: resetBirthDate } = useInput(birthDate);
+  const { value: valueTelephone, bind: bindTelephone, reset: resetTelephone } = useInput(telephone);
+  const { value: valueAddress, bind: bindAddress, reset: resetAddress } = useInput(address);
+  const { value: valueEmail, bind: bindEmail, reset: resetEmail } = useInput(email);
+  const { value: valueType, bind: bindType, reset: resetType } = useInput(type);
   const optionsType = [
     { value: "admin", content: "Administrador" },
     { value: "lawyer", content: "Abogado" }
   ]
   const handleAdd = () => {
-    let data = {
+    let body = {
         username: valueUsername,
         password: valuePassword,
         dni: valueDni,
@@ -39,7 +56,7 @@ const Form = () => {
         email: valueEmail,
         type: valueType,
     }
-    handleCreate(data)
+    handleCreate(body)
   };
 
   return (

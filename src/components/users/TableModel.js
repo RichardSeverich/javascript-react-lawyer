@@ -2,7 +2,7 @@ import React from 'react';
 import { textFilter, dateFilter, selectFilter } from 'react-bootstrap-table2-filter';
 import i18n from "./../../i18n/i18n";
 
-const getTableModel = (handleEdit, handleDelete) => {
+const getTableModel = (navigateForm, handleEdit, handleDelete) => {
 
   const selectOptionsType = {
     admin: 'admin',
@@ -147,7 +147,7 @@ const getTableModel = (handleEdit, handleDelete) => {
       formatter: (cell, row, rowIndex) => (
       <button
         className="btn btn-warning"
-        onClick={() => handleEdit(row)}
+        onClick={() => handleEdit(navigateForm, row)}
       >
         {i18n.userTable.edit}
       </button>

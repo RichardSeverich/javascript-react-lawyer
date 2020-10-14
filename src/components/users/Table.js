@@ -25,8 +25,14 @@ const Table = () => {
     return () => { isMounted = false };
   });
 
-  const navigateForm = () => {
-    history.push("/user-form");
+  const navigateForm = (row) => {
+    history.push({ 
+      pathname: "/users-form",
+      state: { 
+        data: row ,
+        edit: true
+      }
+    })
   }
 
   if (arrayData === undefined) {
@@ -44,7 +50,7 @@ const Table = () => {
           <div className="card-body card-body-users">
             <CommonTable 
               arrayData={arrayData} 
-              columns={getTableModel(handleEdit, handleDelete)}>
+              columns={getTableModel(navigateForm, handleEdit, handleDelete)}>
             </CommonTable>
           </div>
         </div>
