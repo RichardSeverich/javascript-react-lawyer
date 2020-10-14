@@ -5,14 +5,10 @@ import NavigationBar from "./../nav-bar/NavigationBar";
 import useInput from "./../hooks/UseInput";
 import FormInput from "./../common/FormInput";
 import FormDropDown from "./../common/FormDropDown";
-import handleAddRequest from "./HandleAddRequest";
+import { handleCreate } from "./HandleManager";
 import "./Form.css";
 
 const Form = () => {
-  // Env Variables
-  const { REACT_APP_MOCK_DATA } = process.env;
-  const { REACT_APP_BACKEND_HOST } = process.env;
-  const { REACT_APP_BACKEND_PORT } = process.env;
   // Input values
   const { value: valueUsername, bind: bindUsername, reset: resetUsername } = useInput("");
   const { value: valuePassword, bind: bindPassword, reset: resetPassword } = useInput("");
@@ -29,12 +25,8 @@ const Form = () => {
     { value: "admin", content: "Administrador" },
     { value: "lawyer", content: "Abogado" }
   ]
-  // Create logic
-  const handleCreate = () => {
-    if (REACT_APP_MOCK_DATA == "TRUE") {
-      alert("create successfully");
-    } else {
-      handleAddRequest({
+  const handleAdd = () => {
+    let data = {
         username: valueUsername,
         password: valuePassword,
         dni: valueDni,
@@ -46,8 +38,8 @@ const Form = () => {
         address: valueAddress,
         email: valueEmail,
         type: valueType,
-      })
     }
+    handleCreate(data)
   };
 
   return (
@@ -127,7 +119,7 @@ const Form = () => {
               <div className="text-center">
                 <button
                   className="btn btn-success"
-                  onClick={handleCreate} 
+                  onClick={handleAdd}
                   type="button" >
                   Registrar
                 </button>

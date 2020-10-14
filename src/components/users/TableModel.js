@@ -147,7 +147,7 @@ const getTableModel = (handleEdit, handleDelete) => {
       formatter: (cell, row, rowIndex) => (
       <button
         className="btn btn-warning"
-        onClick={() => handleEdit(row.id)}
+        onClick={() => handleEdit(row)}
       >
         {i18n.userTable.edit}
       </button>

@@ -1,5 +1,5 @@
-const handleEdit = (id) => {
-  console.log(id);
+const handleEdit = (row) => {
+  console.log(row);
   alert("Editado exitosamente");
 };
 

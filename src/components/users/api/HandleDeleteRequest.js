@@ -1,4 +1,4 @@
-import requestManager from "./../../api/RequestManager"
+import requestManager from "./../../../api/RequestManager"
 
 const handleDelete = (id) => {
   const url = "users/".concat(id);
@@ -7,7 +7,7 @@ const handleDelete = (id) => {
   if(result){
     requestManager.remove(url, (response) => {
       console.log(response.status);
-      if(response.status===200){
+      if(response && response.status===200){
         alert("Eliminado exitosamente");
       } else {
         alert("No se puede eliminar");
