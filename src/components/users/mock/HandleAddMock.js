@@ -1,4 +1,5 @@
-const handleAddMock = () => {
+const handleAddMock = (body) => {
+  console.log(body);
   alert("create successfully");  
 };
 

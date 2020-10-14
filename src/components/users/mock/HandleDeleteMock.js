@@ -4,6 +4,7 @@ const handleDelete = (id) => {
   let result = window.confirm(message);
   if(result){
     alert("Eliminado exitosamente");
+    window.location.reload();
   }
 };
 

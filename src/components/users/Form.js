@@ -5,25 +5,26 @@ import NavigationBar from "./../nav-bar/NavigationBar";
 import useInput from "./../hooks/UseInput";
 import FormInput from "./../common/FormInput";
 import FormDropDown from "./../common/FormDropDown";
-import { handleCreate } from "./HandleManager";
+import { handleCreate, handleEdit } from "./HandleManager";
 import "./Form.css";
 
 const Form = (props) => {
 
-  console.log(props);
-  let state = props.location.state;
-  let id = state ? state.data.id : "";
-  let username = state ? state.data.username : "";
-  let password = state ? state.data.password : "";
-  let dni = state ? state.data.dni : "";
-  let name = state ? state.data.name : "";
-  let fatherLastName = state ? state.data.fatherLastName : "";
-  let motherLastName = state ? state.data.motherLastName : "";
-  let birthDate = state ? state.data.birthDate : "";
-  let telephone = state ? state.data.telephone : "";
-  let address = state ? state.data.address : "";
-  let email = state ? state.data.email : "";
-  let type = state ? state.data.type : "";
+  const [isEdit, setIsEdit] = useState(props.location.state);
+
+  console.log(isEdit)
+  let id = isEdit ? isEdit.data.id : "";
+  let username = isEdit ? isEdit.data.username : "";
+  let password = isEdit ? isEdit.data.password : "";
+  let dni = isEdit ? isEdit.data.dni : "";
+  let name = isEdit ? isEdit.data.name : "";
+  let fatherLastName = isEdit ? isEdit.data.fatherLastName : "";
+  let motherLastName = isEdit ? isEdit.data.motherLastName : "";
+  let birthDate = isEdit ? isEdit.data.birthDate : "";
+  let telephone = isEdit ? isEdit.data.telephone : "";
+  let address = isEdit ? isEdit.data.address : "";
+  let email = isEdit ? isEdit.data.email : "";
+  let type = isEdit ? isEdit.data.type : "";
 
   const { value: valueUsername, bind: bindUsername, reset: resetUsername } = useInput(username);
   const { value: valuePassword, bind: bindPassword, reset: resetPassword } = useInput(password);
@@ -44,19 +45,35 @@ const Form = (props) => {
   ]
   const handleAdd = () => {
     let body = {
-        username: valueUsername,
-        password: valuePassword,
-        dni: valueDni,
-        name: valueName,
-        fatherLastName: valueFatherLastName,
-        motherLastName: valueMotherLastName,
-        birthDate: valueBirthDate,
-        telephone: valueTelephone,
-        address: valueAddress,
-        email: valueEmail,
-        type: valueType,
+      username: valueUsername,
+      password: valuePassword,
+      dni: valueDni,
+      name: valueName,
+      fatherLastName: valueFatherLastName,
+      motherLastName: valueMotherLastName,
+      birthDate: valueBirthDate,
+      telephone: valueTelephone,
+      address: valueAddress,
+      email: valueEmail,
+      type: valueType,
     }
-    handleCreate(body)
+    if(isEdit) {
+      setIsEdit(undefined);
+      handleEdit(body, id)
+    } else {
+      handleCreate(body);
+    }
+    resetUsername();
+    resetPassword();
+    resetDni();
+    resetName();
+    resetFatherLastName();
+    resetMotherLastName();
+    resetBirthDate();
+    resetTelephone();
+    resetAddress();
+    resetEmail();
+    resetType();
   };
 
   return (

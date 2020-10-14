@@ -7,7 +7,7 @@ import CommonTable from "./../common/CommonTable";
 import Loading from "./../common/Loading"
 import i18n from "./../../i18n/i18n";
 import getTableModel from "./TableModel";
-import { handleGet, handleEdit, handleDelete } from "./HandleManager";
+import { handleGet, handleEditNavigate, handleDelete } from "./HandleManager";
 import "./Table.css";
 
 const Table = () => {
@@ -23,7 +23,7 @@ const Table = () => {
       handleGet(setArrayData);
     }
     return () => { isMounted = false };
-  });
+  }, []);
 
   const navigateForm = (row) => {
     history.push({ 
@@ -50,7 +50,7 @@ const Table = () => {
           <div className="card-body card-body-users">
             <CommonTable 
               arrayData={arrayData} 
-              columns={getTableModel(navigateForm, handleEdit, handleDelete)}>
+              columns={getTableModel(navigateForm, handleEditNavigate, handleDelete)}>
             </CommonTable>
           </div>
         </div>

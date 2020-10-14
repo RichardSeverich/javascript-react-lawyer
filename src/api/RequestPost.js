@@ -9,12 +9,19 @@ const post = (endpoint, body, callback) => {
   console.log(body);
   axios.post(url, body, config)
     .then(response => {
+      console.log("*** RESPONSE ***");
       console.log(response);
       callback(response);
     })
     .catch(error => {
-      console.log(error.response);
-      callback(error.response);
+      console.log("*** RESPONSE ***");
+      if(error.response){
+        console.log(error.response)
+        callback(error.response);
+      } else {
+        console.log(error)
+        callback(error);
+      }
   })
 };
 

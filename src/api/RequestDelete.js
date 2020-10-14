@@ -11,7 +11,14 @@ const remove = (endpoint, callback) => {
       callback(response);
     })
     .catch(error => {
-      callback(error.response);
+      console.log("*** RESPONSE ***");
+      if(error.response){
+        console.log(error.response)
+        callback(error.response);
+      } else {
+        console.log(error)
+        callback(error);
+      }
   })
 };
 

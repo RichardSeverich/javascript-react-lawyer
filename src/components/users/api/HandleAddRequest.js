@@ -1,6 +1,7 @@
 import requestManager from "./../../../api/RequestManager"
 
 const handleAddRequest = (body) => {
+  console.log(body);
   requestManager.post("users", body, (response) => {
     if(response && response.status===201){
       alert("Creado exitosamente");

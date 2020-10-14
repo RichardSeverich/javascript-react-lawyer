@@ -8,12 +8,15 @@ import handleGetMock from "./mock/HandleGetMock";
 import handleAddMock from "./mock/HandleAddMock";
 import handleEditMock from "./mock/HandleEditMock";
 import handleDeleteMock from "./mock/HandleDeleteMock";
+// COMMON
+import handleEditNavigate from "./HandleEditNavigate.js";
 
 const { REACT_APP_MOCK_DATA } = process.env;
+const isMockDisable = REACT_APP_MOCK_DATA === "FALSE";
 
 // GET
 const handleGet = (callback) => {
-  if (REACT_APP_MOCK_DATA === "FALSE") {
+  if (isMockDisable) {
     handleGetRequest(callback);
   } else {
     handleGetMock(callback);
@@ -21,17 +24,25 @@ const handleGet = (callback) => {
 };
 // CREATE
 const handleCreate = (data) => {
-  if (REACT_APP_MOCK_DATA === "FALSE") {
+  if (isMockDisable) {
     handleAddRequest(data);
   } else {
-    handleAddMock();
+    handleAddMock(data);
   }
 };
-// EDIT AND DELETE
-let handleEdit = handleEditMock;
+
+// EDIT
+const handleEdit = (data, id) => {
+  if (isMockDisable) {
+    handleEditRequest(data, id);
+  } else {
+    handleEditMock(data, id);
+  }
+};
+
+// DELETE
 let handleDelete = handleDeleteMock;
-if(REACT_APP_MOCK_DATA === "FALSE"){
-  handleEdit = handleEditRequest;
+if(isMockDisable){
   handleDelete = handleDeleteRequest;
 }
 
@@ -39,5 +50,6 @@ export {
   handleGet,
   handleCreate,
   handleEdit,
+  handleEditNavigate,
   handleDelete,
 }

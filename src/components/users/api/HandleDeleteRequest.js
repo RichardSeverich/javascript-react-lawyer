@@ -9,6 +9,7 @@ const handleDelete = (id) => {
       console.log(response.status);
       if(response && response.status===200){
         alert("Eliminado exitosamente");
+        window.location.reload();
       } else {
         alert("No se puede eliminar");
       }
