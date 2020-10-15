@@ -22,9 +22,10 @@ const FormDropDown = (props) => {
       <label className="col-sm-3 control-label">{props.labelContent}</label>
       <div className="col-sm-9" >
         <select {...props.bind} className="custom-select custom-select-sm">
-          <option defaultValue="select">Selecione</option>
+          <option defaultValue="select">{props.formText}</option>
           {options()}
         </select>
+        <small className={"form-text text-" + props.color}>{props.formText}</small>
       </div>
     </div>
   );

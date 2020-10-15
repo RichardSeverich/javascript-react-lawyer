@@ -5,12 +5,29 @@ import NavigationBar from "./../nav-bar/NavigationBar";
 import useInput from "./../hooks/UseInput";
 import FormInput from "./../common/FormInput";
 import FormDropDown from "./../common/FormDropDown";
+import i18n from "./../../i18n/i18n";
+import handleValidations from "./HandleValidations";
 import { handleCreate, handleEdit } from "./HandleManager";
 import "./Form.css";
 
 const Form = (props) => {
 
+  const colorFormReset = {
+    username: "",
+    password: "",
+    dni: "",
+    name: "",
+    fatherLastName: "",
+    motherLastName: "",
+    birthDate: "",
+    telephone: "",
+    address: "",
+    email: "",
+    type: "",
+  }
+  
   const [isEdit, setIsEdit] = useState(props.location.state);
+  const [colorFormText, setColorFormText] = useState(colorFormReset);
 
   console.log(isEdit)
   let id = isEdit ? isEdit.data.id : "";
@@ -57,23 +74,27 @@ const Form = (props) => {
       email: valueEmail,
       type: valueType,
     }
-    if(isEdit) {
-      setIsEdit(undefined);
-      handleEdit(body, id)
-    } else {
-      handleCreate(body);
+    console.log(colorFormText);
+    let isValid = handleValidations(body, setColorFormText, colorFormReset);
+    if(isValid){
+      if(isEdit) {
+        setIsEdit(undefined);
+        handleEdit(body, id)
+      } else {
+        handleCreate(body);
+      }
+      resetUsername();
+      resetPassword();
+      resetDni();
+      resetName();
+      resetFatherLastName();
+      resetMotherLastName();
+      resetBirthDate();
+      resetTelephone();
+      resetAddress();
+      resetEmail();
+      resetType();
     }
-    resetUsername();
-    resetPassword();
-    resetDni();
-    resetName();
-    resetFatherLastName();
-    resetMotherLastName();
-    resetBirthDate();
-    resetTelephone();
-    resetAddress();
-    resetEmail();
-    resetType();
   };
 
   return (
@@ -86,68 +107,90 @@ const Form = (props) => {
           </div>
           <div className="card-body">
             <form className="">
-              <FormInput 
-                labelContent="Username" 
-                minLength="3" maxLength="10" 
+              <FormInput
+                labelContent={i18n.userForm.formLabelUsername}
+                formText={i18n.userForm.formTextUsername}
+                color={colorFormText.username}
+                minLength="3"
+                maxLength="10"
                 bind={bindUsername}
               ></FormInput>
-              <FormInput 
-                labelContent="Contrasena" 
-                minLength="3" 
-                maxLength="10" 
+              <FormInput
+                labelContent={i18n.userForm.formLabelPassword} 
+                formText={i18n.userForm.formTextPassword}
+                color={colorFormText.password}
+                minLength="3"
+                maxLength="10"
                 bind={bindPassword}
               ></FormInput>
-              <FormInput 
-                labelContent="Cedula Identidad" 
-                minLength="7" 
-                maxLength="7" 
+              <FormInput
+                labelContent={i18n.userForm.formLabelDni} 
+                formText={i18n.userForm.formTextDni}
+                color={colorFormText.dni}
+                minLength="3"
+                maxLength="10"
                 bind={bindDni}
               ></FormInput>
-              <FormInput 
-                labelContent="Nombres" 
-                minLength="3" 
-                maxLength="24" 
+              <FormInput
+                labelContent={i18n.userForm.formLabelName} 
+                formText={i18n.userForm.formTextName}
+                color={colorFormText.name}
+                minLength="3"
+                maxLength="30"
                 bind={bindName}
               ></FormInput>
               <FormInput
-                labelContent="Apellido Paterno"
+                labelContent={i18n.userForm.formLabelFatherLastName} 
+                formText={i18n.userForm.formTextFatherLastName}
+                color={colorFormText.fatherLastName}
                 minLength="3"
-                maxLength="24"
+                maxLength="30"
                 bind={bindFatherLastName}
               ></FormInput>
               <FormInput
-                labelContent="Apellido Materno"
+                labelContent={i18n.userForm.formLabelMotherLastName}
+                formText={i18n.userForm.formTextMotherLastName}
+                color={colorFormText.motherLastName}
                 minLength="3"
-                maxLength="24"
+                maxLength="30"
                 bind={bindMotherLastName}
               ></FormInput>
               <FormInput
-                labelContent="Fecha de Nacimiento"
+                labelContent={i18n.userForm.formLabelBirthDate} 
+                formText={i18n.userForm.formTextBirthDate}
+                color={colorFormText.birthDate}
                 type="date"
                 bind={bindBirthDate}
               ></FormInput>
               <FormInput
-                labelContent="Celular"
+                labelContent={i18n.userForm.formLabelTelephone}
+                formText={i18n.userForm.formTextTelephone}
+                color={colorFormText.telephone}
                 minLength="3"
-                maxLength="24"
-                type="number"
+                maxLength="30"
                 bind={bindTelephone}
               ></FormInput>
-              <FormInput 
-                labelContent="Direccion" 
-                minLength="3" 
-                maxLength="30" 
+              <FormInput
+                labelContent={i18n.userForm.formLabelAddress}
+                formText={i18n.userForm.formTextAddress}
+                color={colorFormText.address}
+                minLength="3"
+                maxLength="60"
                 bind={bindAddress}
               ></FormInput>
-              <FormInput 
-                labelContent="Email" 
-                minLength="3" 
-                maxLength="30" 
+              <FormInput
+                labelContent={i18n.userForm.formLabelEmail}
+                formText={i18n.userForm.formTextEmail}
+                color={colorFormText.email}
+                minLength="3"
+                maxLength="30"
                 bind={bindEmail}
               ></FormInput>
               <FormDropDown
-               labelContent="Tipo" 
+               labelContent={i18n.userForm.formLabelType}
+               formText={i18n.userForm.formTextTipo}
                options={optionsType}
+               color={colorFormText.type}
                bind={bindType}
               ></FormDropDown>
               <div className="text-center">

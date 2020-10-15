@@ -1,6 +1,7 @@
 import React from "react";
 
 const FormInput = (props) => {
+
   return (
     <div className="form-group row">
       <label className="col-sm-3 control-label">{props.labelContent}</label>
@@ -12,6 +13,7 @@ const FormInput = (props) => {
           maxLength={props.maxLength}
           {...props.bind}
         ></input>
+        <small className={"form-text text-" + props.color}>{props.formText}</small>
       </div>
     </div>
   );

@@ -30,7 +30,6 @@ const handleCreate = (data) => {
     handleAddMock(data);
   }
 };
-
 // EDIT
 const handleEdit = (data, id) => {
   if (isMockDisable) {
@@ -39,7 +38,6 @@ const handleEdit = (data, id) => {
     handleEditMock(data, id);
   }
 };
-
 // DELETE
 let handleDelete = handleDeleteMock;
 if(isMockDisable){
