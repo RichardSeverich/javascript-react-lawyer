@@ -1,12 +1,12 @@
 import mockData from "./../../mock-data/mock-data-manager";
-import handleErrorMessage from "./HandleErrorMessage";
+import messageManager from "./../common/MessageManager";
 
 const handleLoginMock= (username, password, 
   resetUsername, resetPassword, handleNavigate) => {
   if (isUserValid(username, password)) {
     handleNavigate();
   } else {
-    handleErrorMessage(resetUsername, resetPassword);
+    messageManager.invalidCredentials(resetUsername, resetPassword);
   }
 };
 

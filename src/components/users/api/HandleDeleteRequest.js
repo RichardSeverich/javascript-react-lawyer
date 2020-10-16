@@ -1,4 +1,5 @@
 import requestManager from "./../../../api/RequestManager"
+import messageManager from "./../../common/MessageManager";
 
 const handleDelete = (id) => {
   const url = "users/".concat(id);
@@ -6,13 +7,8 @@ const handleDelete = (id) => {
   let result = window.confirm(message);
   if(result){
     requestManager.remove(url, (response) => {
-      console.log(response.status);
-      if(response && response.status===200){
-        alert("Eliminado exitosamente");
-        window.location.reload();
-      } else {
-        alert("No se puede eliminar");
-      }
+      messageManager.deleteMessages(response);
+      window.location.reload();
     });
   }
 };

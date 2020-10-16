@@ -1,5 +1,5 @@
 import requestManager from "./../../api/RequestManager"
-import handleErrorMessage from "./HandleErrorMessage";
+import messageManager from "./../common/MessageManager";
 
 const handleLoginRequest = (username, password, 
   resetUsername, resetPassword, handleNavigate) => {
@@ -10,15 +10,13 @@ const handleLoginRequest = (username, password,
   requestManager.postAuth("login", body, (response) => {
     if(response.status===200){
       window.localStorage.setItem("token", response.data.data[0].token);
+      window.localStorage.setItem("username", response.data.data[0].username);
       handleNavigate();
-    } else if(response.status===400){
-      handleErrorMessage(resetUsername, resetPassword);
-    } else if(response.status===404){
-      handleErrorMessage(resetUsername, resetPassword);
+    } else {
+      messageManager.loginMessages(response);
     }
-    else {
-      console.log("Algo no esta funcionando bien, contacte con su administrador");
-    }
+    resetUsername();
+    resetPassword();
   });
 }
 

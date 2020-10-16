@@ -29,7 +29,7 @@ const Form = (props) => {
   const [isEdit, setIsEdit] = useState(props.location.state);
   const [colorFormText, setColorFormText] = useState(colorFormReset);
 
-  console.log(isEdit)
+  console.log("isEdit " + isEdit);
   let id = isEdit ? isEdit.data.id : "";
   let username = isEdit ? isEdit.data.username : "";
   let password = isEdit ? isEdit.data.password : "";
@@ -60,6 +60,20 @@ const Form = (props) => {
     { value: "admin", content: "Administrador" },
     { value: "lawyer", content: "Abogado" }
   ]
+
+  const handleReset = () => {
+    resetUsername();
+    resetPassword();
+    resetDni();
+    resetName();
+    resetFatherLastName();
+    resetMotherLastName();
+    resetBirthDate();
+    resetTelephone();
+    resetAddress();
+    resetEmail();
+    resetType();
+  }
   const handleAdd = () => {
     let body = {
       username: valueUsername,
@@ -78,22 +92,10 @@ const Form = (props) => {
     let isValid = handleValidations(body, setColorFormText, colorFormReset);
     if(isValid){
       if(isEdit) {
-        setIsEdit(undefined);
-        handleEdit(body, id)
+        handleEdit(body, id, handleReset, setIsEdit)
       } else {
-        handleCreate(body);
+        handleCreate(body, handleReset);
       }
-      resetUsername();
-      resetPassword();
-      resetDni();
-      resetName();
-      resetFatherLastName();
-      resetMotherLastName();
-      resetBirthDate();
-      resetTelephone();
-      resetAddress();
-      resetEmail();
-      resetType();
     }
   };
 

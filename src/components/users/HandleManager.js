@@ -16,27 +16,21 @@ const isMockDisable = REACT_APP_MOCK_DATA === "FALSE";
 
 // GET
 const handleGet = (callback) => {
-  if (isMockDisable) {
-    handleGetRequest(callback);
-  } else {
-    handleGetMock(callback);
-  }
+  isMockDisable 
+  ? handleGetRequest(callback) 
+  : handleGetMock(callback);
 };
 // CREATE
-const handleCreate = (data) => {
-  if (isMockDisable) {
-    handleAddRequest(data);
-  } else {
-    handleAddMock(data);
-  }
+const handleCreate = (data, handleReset) => {
+  isMockDisable 
+  ? handleAddRequest(data, handleReset) 
+  : handleAddMock(data, handleReset);
 };
 // EDIT
-const handleEdit = (data, id) => {
-  if (isMockDisable) {
-    handleEditRequest(data, id);
-  } else {
-    handleEditMock(data, id);
-  }
+const handleEdit = (data, id, handleReset, setIsEdit) => {
+  isMockDisable 
+  ? handleEditRequest(data, id, handleReset, setIsEdit) 
+  : handleEditMock(data, id, handleReset, setIsEdit);
 };
 // DELETE
 let handleDelete = handleDeleteMock;

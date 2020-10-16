@@ -1,5 +1,5 @@
 const token = window.localStorage.getItem("token");
 const config = {
-  headers: { Authorization: `Bearer ${token}` }
+  headers: { Authorization: `${token}` }
 };
 export default config;

@@ -1,15 +1,11 @@
 import requestManager from "./../../../api/RequestManager"
+import messageManager from "./../../common/MessageManager";
 
-const handleAddRequest = (body) => {
+const handleAddRequest = (body, handleReset) => {
   console.log(body);
   requestManager.post("users", body, (response) => {
-    if(response && response.status===201){
-      alert("Creado exitosamente");
-    } else if(response && response.status===400) {
-      alert("No se puede crear");
-    } else {
-      alert("Error: Contacte con su administrador");
-    }
+    if(response && response.status===201){handleReset();}
+    messageManager.addMessages(response);
   });
 }
 
