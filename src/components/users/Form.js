@@ -75,6 +75,7 @@ const Form = (props) => {
     resetType();
   }
   const handleAdd = () => {
+    const username = window.localStorage.getItem("username");
     let body = {
       username: valueUsername,
       password: valuePassword,
@@ -87,6 +88,8 @@ const Form = (props) => {
       address: valueAddress,
       email: valueEmail,
       type: valueType,
+      createdBy: username,
+      updatedBy: username,
     }
     console.log(colorFormText);
     let isValid = handleValidations(body, setColorFormText, colorFormReset);

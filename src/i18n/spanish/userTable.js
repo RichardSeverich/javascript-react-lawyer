@@ -16,6 +16,8 @@ const i18n = {
   headerType: "Tipo",
   headerCreationDate: "Fecha de creacion",
   headerModificationDate: "Fecha de modificacion",
+  headerCreatedBy: "Creado por",
+  headerUpdatedBy: "Editado por",
   edit: "Editar",
   delete: "Eliminar",
 };

@@ -139,6 +139,24 @@ const getTableModel = (navigateForm, handleEdit, handleDelete) => {
       }
     },
     {
+      dataField: 'createdBy',
+      text: i18n.userTable.headerCreatedBy,
+      sort: true,
+      filter: textFilter(),
+      headerStyle: {
+        width: '160px'
+      }
+    },
+    {
+      dataField: 'updatedBy',
+      text: i18n.userTable.headerUpdatedBy,
+      sort: true,
+      filter: textFilter(),
+      headerStyle: {
+        width: '160px'
+      }
+    },
+    {
       dataField: 'edit',
       text: i18n.userTable.edit,
       headerStyle: {
