@@ -1,8 +1,8 @@
 import requestManager from "./../../../api/RequestManager"
-import messageManager from "./../../common/MessageManager";
+import messageManager from "./../MessageManager";
 
-const handleGetRequest = (callback) => {
-    requestManager.get("users", (response) => {
+const handleGetRequest = (endpoint, callback) => {
+    requestManager.get(endpoint, (response) => {
       if(response && response.status===200){
         callback(response.data.data);
       } else {

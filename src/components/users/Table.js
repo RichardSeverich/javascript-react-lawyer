@@ -7,7 +7,7 @@ import CommonTable from "./../common/CommonTable";
 import Loading from "./../common/Loading"
 import i18n from "./../../i18n/i18n";
 import getTableModel from "./TableModel";
-import { handleGet, handleEditNavigate, handleDelete } from "./HandleManager";
+import { handleGet, handleEditNavigate, handleDelete } from "./../handle/HandleManager";
 import "./Table.css";
 
 const Table = () => {
@@ -20,7 +20,7 @@ const Table = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      handleGet(setArrayData);
+      handleGet("users/", setArrayData);
     }
     return () => { isMounted = false };
   }, []);

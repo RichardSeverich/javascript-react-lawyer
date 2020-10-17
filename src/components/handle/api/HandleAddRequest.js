@@ -1,9 +1,8 @@
 import requestManager from "./../../../api/RequestManager"
-import messageManager from "./../../common/MessageManager";
+import messageManager from "./../MessageManager";
 
-const handleAddRequest = (body, handleReset) => {
-  console.log(body);
-  requestManager.post("users", body, (response) => {
+const handleAddRequest = (endpoint, body, handleReset) => {
+  requestManager.post(endpoint, body, (response) => {
     if(response && response.status===201){handleReset();}
     messageManager.addMessages(response);
   });

@@ -1,5 +1,5 @@
 import mockData from "./../../mock-data/mock-data-manager";
-import messageManager from "./../common/MessageManager";
+import messageManager from "./../handle/MessageManager";
 
 const handleLoginMock= (username, password, 
   resetUsername, resetPassword, handleNavigate) => {

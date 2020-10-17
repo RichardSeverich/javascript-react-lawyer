@@ -97,7 +97,7 @@ const getTableModel = (navigateForm, handleEdit, handleDelete) => {
       sort: true,
       filter: textFilter(),
       headerStyle: {
-        width: '160px'
+        width: '250px'
       }
     },
     {
@@ -162,7 +162,7 @@ const getTableModel = (navigateForm, handleEdit, handleDelete) => {
       formatter: (cell, row, rowIndex) => (
         <button
         className="btn btn-danger"
-        onClick={() => handleDelete(row.id)}
+        onClick={() => handleDelete("users/", row.id)}
         >
           {i18n.userTable.delete}
         </button>

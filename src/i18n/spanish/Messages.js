@@ -7,6 +7,7 @@ const i18n = {
   errorStaus409: "Error 409: Conflictos",
   unknownError: "Error no conocido: Contacte con su administrador",
   invalidCredentials: "Usuario o Contrasena Incorrecto",
+  confirmModal: "Esta seguro que desea realizar esta accion ?",
 };
 
 export default i18n;

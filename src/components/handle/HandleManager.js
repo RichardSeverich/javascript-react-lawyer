@@ -15,22 +15,22 @@ const { REACT_APP_MOCK_DATA } = process.env;
 const isMockDisable = REACT_APP_MOCK_DATA === "FALSE";
 
 // GET
-const handleGet = (callback) => {
+const handleGet = (endpoint, callback) => {
   isMockDisable 
-  ? handleGetRequest(callback) 
-  : handleGetMock(callback);
+  ? handleGetRequest(endpoint, callback) 
+  : handleGetMock(endpoint, callback);
 };
 // CREATE
-const handleCreate = (data, handleReset) => {
+const handleCreate = (endpoint, data, handleReset) => {
   isMockDisable 
-  ? handleAddRequest(data, handleReset) 
-  : handleAddMock(data, handleReset);
+  ? handleAddRequest(endpoint, data, handleReset) 
+  : handleAddMock(endpoint, data, handleReset);
 };
 // EDIT
-const handleEdit = (data, id, handleReset, setIsEdit) => {
+const handleEdit = (endpoint, data, id, handleReset, setIsEdit) => {
   isMockDisable 
-  ? handleEditRequest(data, id, handleReset, setIsEdit) 
-  : handleEditMock(data, id, handleReset, setIsEdit);
+  ? handleEditRequest(endpoint, data, id, handleReset, setIsEdit) 
+  : handleEditMock(endpoint, data, id, handleReset, setIsEdit);
 };
 // DELETE
 let handleDelete = handleDeleteMock;

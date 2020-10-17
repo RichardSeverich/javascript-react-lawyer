@@ -7,7 +7,7 @@ import FormInput from "./../common/FormInput";
 import FormDropDown from "./../common/FormDropDown";
 import i18n from "./../../i18n/i18n";
 import handleValidations from "./HandleValidations";
-import { handleCreate, handleEdit } from "./HandleManager";
+import { handleCreate, handleEdit } from "./../handle/HandleManager";
 import "./Form.css";
 
 const Form = (props) => {
@@ -92,9 +92,9 @@ const Form = (props) => {
     let isValid = handleValidations(body, setColorFormText, colorFormReset);
     if(isValid){
       if(isEdit) {
-        handleEdit(body, id, handleReset, setIsEdit)
+        handleEdit("users/", body, id, handleReset, setIsEdit)
       } else {
-        handleCreate(body, handleReset);
+        handleCreate("users/", body, handleReset);
       }
     }
   };

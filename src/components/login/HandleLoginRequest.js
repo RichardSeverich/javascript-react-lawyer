@@ -1,5 +1,5 @@
 import requestManager from "./../../api/RequestManager"
-import messageManager from "./../common/MessageManager";
+import messageManager from "./../handle/MessageManager";
 
 const handleLoginRequest = (username, password, 
   resetUsername, resetPassword, handleNavigate) => {
