@@ -13,8 +13,8 @@ const NavigationBar = () => {
   const history = useHistory();
   const navigateUsersForm = () => { history.push("/users-form");}
   const navigateUsersTable = () => { history.push("/users-table");}
-  const navigatePersonsForm = () => { history.push("/");}
-  const navigatePersonsTable = () => { history.push("/");}
+  const navigatePersonsForm = () => { history.push("/persons-form");}
+  const navigatePersonsTable = () => { history.push("/persons-table");}
   const navigateProcessForm = () => { history.push("/");}
   const navigateProcessTable = () => { history.push("/");}
   const navigateReportUsers = () => { history.push("/");}

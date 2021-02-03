@@ -20,14 +20,14 @@ const Table = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      handleGet("users/", setArrayData);
+      handleGet("persons/", setArrayData);
     }
     return () => { isMounted = false };
   }, []);
 
   const navigateForm = (row) => {
     history.push({ 
-      pathname: "/users-form",
+      pathname: "/persons-form",
       state: { 
         data: row ,
         edit: true
@@ -45,7 +45,7 @@ const Table = () => {
       <div className="container col-md-12">
         <div className="card card-table">
           <div className="card-header">
-            <h3 align="center">{i18n.userTable.tableTitle}</h3>
+            <h3 align="center">{i18n.personTable.tableTitle}</h3>
           </div>
           <div className="card-body card-body-table">
             <CommonTable 
