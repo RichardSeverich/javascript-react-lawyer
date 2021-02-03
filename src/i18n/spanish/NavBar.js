@@ -4,7 +4,7 @@ const i18n = {
   groupButtonsProcess: "Adm. Procesos",
   groupButtonsReports: "Adm. Reportes",
   groupButtonsOptions: "Opciones",
-  buttonForm: "Crear",
+  buttonForm: "Registrar",
   buttonTable: "Mostrar",
   buttonReportUsers: "Reporte Usuarios",
   buttonReportPersons: "Reporte Personas",

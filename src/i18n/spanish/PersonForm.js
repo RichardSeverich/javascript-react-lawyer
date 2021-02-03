@@ -1,8 +1,6 @@
 const i18n = {
   // Form Label
-  formTitle:"Usuarios",
-  formLabelUsername: "Username",
-  formLabelPassword: "Contrasena",
+  formTitle: "Personas",
   formLabelDni: "Cedula Identidad",
   formLabelName: "Nombres",
   formLabelFatherLastName: "Apellido Paterno",
@@ -11,7 +9,6 @@ const i18n = {
   formLabelTelephone: "Celular",
   formLabelAddress: "Direccion",
   formLabelEmail: "Email",
-  formLabelType: "Tipo",
   // Form Text
   formTextUsername: "Minimo 3 maximo 10 caracteres",
   formTextPassword: "Minimo 3 maximo 10 caracteres",
