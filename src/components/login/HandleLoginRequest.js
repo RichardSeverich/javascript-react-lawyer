@@ -1,4 +1,4 @@
-import requestManager from "./../../api/RequestManager"
+import requestManager from "../../api/RequestManager"
 import messageManager from "./../handle/MessageManager";
 
 const handleLoginRequest = (username, password, 

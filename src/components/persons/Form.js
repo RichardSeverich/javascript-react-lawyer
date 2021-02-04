@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 // Components
 import NavigationBar from "./../nav-bar/NavigationBar";
-import useInput from "./../hooks/UseInput";
+import useInput from "./../hooks/useInput";
 import FormInput from "./../common/FormInput";
 import FormDropDown from "./../common/FormDropDown";
 import i18n from "./../../i18n/i18n";

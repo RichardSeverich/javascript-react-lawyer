@@ -3,7 +3,7 @@ import React from "react";
 import { useHistory } from "react-router";
 // Others
 import Logo from "./../logo/Logo";
-import useInput from "./../hooks/UseInput";
+import useInput from "./../hooks/useInput";
 import handleLogin from "./HandleLogin";
 import "./Login.css";
 
